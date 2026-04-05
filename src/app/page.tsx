@@ -1,4 +1,5 @@
 import About from "@/components/About";
+import Expertise from "@/components/Expertise";
 import Hero from "@/components/Hero";
 import Portfolio from "@/components/Portfolio";
 import Services from "@/components/Services";
@@ -9,6 +10,7 @@ export default function Home() {
       <Hero></Hero>
       <About></About>
       <Portfolio></Portfolio>
+      <Expertise></Expertise>
     </div>
   );
 }
