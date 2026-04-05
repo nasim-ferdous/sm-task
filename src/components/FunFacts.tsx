@@ -39,8 +39,8 @@ export default function FunFacts() {
   };
 
   return (
-    <section className="py-24 bg-black text-white w-full overflow-hidden">
-      <div className="max-w-[1400px] mx-auto px-6">
+    <section className="py-24 max-w-9xl mx-auto  bg-black text-white w-full overflow-hidden">
+      <div className=" px-6">
         {/* Top Header Label */}
         <div className="mb-12 border-t border-gray-800 pt-4">
           <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-gray-400">
