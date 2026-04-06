@@ -1,5 +1,5 @@
 "use client";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 import { Plus, Minus } from "lucide-react";
 import React, { useState } from "react";
 
@@ -41,9 +41,11 @@ export default function Expertise() {
     setExpandedId((prev) => (prev === id ? null : id));
   };
 
-  // Staggered Text Logic for "LET'S TALK" (Same as MORE WORKS)
+  // Staggered Text Logic for "LET'S TALK"
   const buttonText = "LET'S TALK";
-  const letterVariants = {
+  
+  // Explicitly typed as Variants to fix the Easing/TargetResolver error
+  const letterVariants: Variants = {
     initial: { opacity: 1, y: 0 },
     hover: (i: number) => ({
       opacity: [0, 1],
@@ -55,7 +57,6 @@ export default function Expertise() {
   return (
     <section className="py-24 bg-white text-black w-full border-t border-gray-200">
       <div className="max-w-[1400px] mx-auto px-6">
-        {/* Top Header Label from image_8.png */}
         <div className="mb-12">
           <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-gray-500">
             OUR EXPERTISE
@@ -81,7 +82,7 @@ export default function Expertise() {
                 key={item.id}
                 className="border-t border-gray-200 first:border-t-0"
               >
-                {/* Accordion Header (Always visible) */}
+                {/* Accordion Header */}
                 <div
                   className="py-12 flex flex-wrap items-center justify-between cursor-pointer gap-y-4"
                   onClick={() => toggleAccordion(item.id)}
@@ -90,9 +91,10 @@ export default function Expertise() {
                     {item.title}
                   </h3>
 
-                  {/* Collapsed Tags (only visible when collapsed) */}
                   <div
-                    className={`flex flex-wrap gap-2 transition-opacity duration-300 ${isExpanded ? "opacity-0 h-0 w-0" : "opacity-100"}`}
+                    className={`flex flex-wrap gap-2 transition-opacity duration-300 ${
+                      isExpanded ? "opacity-0 h-0 w-0" : "opacity-100"
+                    }`}
                   >
                     {item.tags.slice(0, 2).map((tag) => (
                       <span
@@ -104,7 +106,6 @@ export default function Expertise() {
                     ))}
                   </div>
 
-                  {/* Icon Circle Box */}
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-full bg-black text-white flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
                       {isExpanded ? <Minus size={20} /> : <Plus size={20} />}
@@ -125,7 +126,6 @@ export default function Expertise() {
                       className="overflow-hidden pb-12"
                     >
                       <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pt-8">
-                        {/* Tags and Description */}
                         <div className="md:col-span-6 space-y-6">
                           <div className="flex flex-wrap gap-2">
                             {item.tags.map((tag) => (

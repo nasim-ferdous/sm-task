@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion"; // Added Variants import
 import { Plus } from "lucide-react";
 import React from "react";
 
@@ -39,7 +39,8 @@ const teamMembers = [
 export default function OurAvengers() {
   const buttonText = "JOIN WITH US";
 
-  const letterVariants = {
+  // Applied Variants type here to fix the index signature error
+  const letterVariants: Variants = {
     initial: { opacity: 1, y: 0 },
     hover: (i: number) => ({
       opacity: [0, 1],
@@ -94,13 +95,11 @@ export default function OurAvengers() {
           </div>
           <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-3 gap-8">
             {teamMembers.map((member, index) => {
-              // Logic to position cards:
-              // First two cards (0, 1) start in columns 2 and 3 (right side)
-              // Next cards shift left
+              // Logic to position cards
               const getGridClass = (i: number) => {
-                if (i === 0) return "md:col-start-2"; // First card starts at middle column
-                if (i === 1) return "md:col-start-3"; // Second card at right column
-                return ""; // Rest follow normal flow
+                if (i === 0) return "md:col-start-2";
+                if (i === 1) return "md:col-start-3";
+                return "";
               };
 
               return (
@@ -110,7 +109,9 @@ export default function OurAvengers() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className={`${getGridClass(index)} bg-white rounded-[40px] p-5 shadow-sm`}
+                  className={`${getGridClass(
+                    index,
+                  )} bg-white rounded-[40px] p-5 shadow-sm`}
                 >
                   <div className="bg-[#d2b48c] rounded-[32px] overflow-hidden aspect-[4/5]">
                     <img

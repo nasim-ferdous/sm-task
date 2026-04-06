@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion"; // 1. Added Variants import
 import { Plus, ArrowRight } from "lucide-react";
 import React from "react";
 
@@ -31,7 +31,8 @@ const portfolioItems = [
 ];
 
 export default function Portfolio() {
-  const fadeInUp = {
+  // 2. Added explicit Variants type
+  const fadeInUp: Variants = {
     initial: { opacity: 0, y: 50 },
     whileInView: {
       opacity: 1,
@@ -42,7 +43,9 @@ export default function Portfolio() {
 
   // --- Staggered Letter Reveal Logic ---
   const buttonText = "MORE WORKS";
-  const letterVariants = {
+
+  // 3. Added explicit Variants type
+  const letterVariants: Variants = {
     initial: {
       opacity: 1,
       y: 0,
@@ -96,8 +99,7 @@ export default function Portfolio() {
                 />
               </div>
 
-              {/* --- IMAGE HOVER INFO BOX (The provided photo box) --- */}
-              {/* Note: opacity-0 group-hover:opacity-100 handles the simple visibility switch */}
+              {/* --- IMAGE HOVER INFO BOX --- */}
               <div className="absolute inset-x-4 bottom-4 z-20 transition-all duration-500 ease-out translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 pointer-events-none">
                 <div className="bg-white rounded-2xl p-6 flex items-center justify-between shadow-2xl">
                   <div>
@@ -115,7 +117,6 @@ export default function Portfolio() {
                       ))}
                     </div>
                   </div>
-                  {/* Floka standard black arrow circle */}
                   <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center text-white shrink-0 ml-4">
                     <ArrowRight size={20} strokeWidth={2.5} />
                   </div>
@@ -135,12 +136,10 @@ export default function Portfolio() {
             whileHover="hover"
             className="group flex items-center gap-4 text-xs uppercase font-semibold tracking-widest"
           >
-            {/* The standard Plus circle */}
             <div className="w-12 h-12 rounded-full bg-black text-white flex items-center justify-center transition-transform group-hover:rotate-90 group-hover:bg-primary transition-all duration-300">
               <Plus size={20} strokeWidth={2.5} />
             </div>
 
-            {/* The Text Container that will remain normal until hovered */}
             <span className="flex overflow-hidden relative">
               {buttonText.split("").map((char, i) => (
                 <motion.span

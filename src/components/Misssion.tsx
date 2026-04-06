@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion"; // 1. Added Variants import
 
 const awards = [
   { platform: "Awwwards", achievement: "Website design agency" },
@@ -8,7 +8,8 @@ const awards = [
 ];
 
 export default function Mission() {
-  const fadeInUp = {
+  // 2. Explicitly type the variants object
+  const fadeInUp: Variants = {
     initial: { opacity: 0, y: 30 },
     whileInView: {
       opacity: 1,

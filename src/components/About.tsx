@@ -1,9 +1,10 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion"; // 1. Added Variants import
 import Mission from "./Misssion";
 
 export default function About() {
-  const textReveal = {
+  // 2. Added explicit type to textReveal
+  const textReveal: Variants = {
     initial: { y: 100, opacity: 0 },
     whileInView: {
       y: 0,
@@ -67,15 +68,13 @@ export default function About() {
               className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
             />
             <div className="absolute bottom-8 right-8 flex -space-x-4">
-              {/* Black Badge */}
               <div className="w-24 h-24 bg-black rounded-full flex items-center justify-center p-4 border border-white/10 shadow-2xl">
                 <img
                   src="https://environmentalkleanup.com/wp-content/uploads/2023/10/badge3.png"
                   alt="Award 1"
-                  className="w-full h-auto invert" // Floka uses an invert look for the dark badge
+                  className="w-full h-auto invert"
                 />
               </div>
-              {/* White Badge */}
               <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center p-4 shadow-2xl">
                 <img
                   src="https://3dprintitall.com/wp-content/uploads/2022/05/logo-1.png"
@@ -87,7 +86,7 @@ export default function About() {
           </motion.div>
         </div>
       </div>
-      <Mission></Mission>
+      <Mission />
     </section>
   );
 }
